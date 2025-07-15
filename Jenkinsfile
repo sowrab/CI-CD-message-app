@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Clone Repo') {
       steps {
-        git url: 'https://github.com/your-user/ci-cd-message-app.git', branch: 'main'
+        git url: 'https://github.com/sowrab/CI-CD-message-app.git', branch: 'main'
       }
     }
     stage('Build Images') {
