@@ -21,17 +21,21 @@ pipeline {
     }
     stage('Deploy to EC2') {
       steps {
-        sshagent (credentials: ['ec2-ssh-key']) {
-          sh '''
-          ssh -o StrictHostKeyChecking=no ubuntu@98.81.246.162 '
-            cd ~/deploy &&
-            git pull origin main &&
-            docker pull $DOCKERHUB_USER/frontend:latest &&
-            docker pull $DOCKERHUB_USER/backend:latest &&
-            docker-compose -f docker-compose.prod.yml up -d
-          '
-          '''
-        }
+        sshagent(credentials: ['ec2-ssh-key']) {
+  sh """
+    ssh -o StrictHostKeyChecking=no ubuntu@98.81.246.162 '
+      mkdir -p ~/deploy &&
+      cd ~/deploy &&
+      git init &&
+      git remote add origin https://github.com/sowrab/CI-CD-message-app.git || true &&
+      git fetch origin &&
+      git checkout -f main &&
+      docker pull $DOCKERHUB_USER/frontend:latest &&
+      docker pull $DOCKERHUB_USER/backend:latest &&
+      docker-compose -f docker-compose.prod.yml up -d
+    '
+  """
+         }
       }
     }
   }
