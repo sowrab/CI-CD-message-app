@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Message Form</title></head>
+<body>
+  <h1>Send a Message</h1>
+  <form id="msgForm">
+    <input type="text" id="message" placeholder="Enter message">
+    <button type="submit">Send</button>
+  </form>
+  <script>
+    document.getElementById("msgForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const msg = document.getElementById("message").value;
+      fetch("http://98.81.246.162:5000/message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ msg })
+      }).then(res => alert("Message sent!"));
+    });
+  </script>
+</body>
+</html>
