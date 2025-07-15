@@ -1,11 +1,11 @@
 version: '3'
 services:
   frontend:
-    image: your-dockerhub-user/frontend:latest
+    image: sowrabhk/frontend:latest
     ports:
       - "80:80"
 
   backend:
-    image: your-dockerhub-user/backend:latest
+    image: sowrabhk/backend:latest
     ports:
       - "5000:5000"
