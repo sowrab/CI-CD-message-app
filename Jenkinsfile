@@ -2,7 +2,8 @@ pipeline {
   agent any
   environment {
     DOCKERHUB_USER = 'sowrabhk'
-    DOCKERHUB_PASS = credentials('dockerhub-creds')
+    DOCKERHUB_PASS = 'Sharva@2020'
+    // credentials('dockerhub-creds')
   }
   stages {
     stage('Build Docker Images') {
