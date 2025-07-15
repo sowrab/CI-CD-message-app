@@ -23,7 +23,7 @@ pipeline {
       steps {
         sshagent(credentials: ['ec2-ssh-key']) {
   sh """
-    ssh -o StrictHostKeyChecking=no ubuntu@98.81.246.162 '
+    ssh -o StrictHostKeyChecking=no ubuntu@13.222.158.46 '
       mkdir -p ~/deploy &&
       cd ~/deploy &&
       git init &&
